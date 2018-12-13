@@ -3,8 +3,8 @@
 namespace mtgraphics
 {
     Graphics::Graphics() :
-        bufferMask(0),
         clearColor(glm::vec4(0.0f, 0.0f, 0.0f, 0.0f)),
+	bufferMask(0),
         Windows(windows)
     {
         int status = glfwInit();

@@ -31,7 +31,8 @@ namespace mtgraphics
         shaderProgram->setMat4("view", camera->getViewMatrix());
         shaderProgram->setMat4("projection", camera->getProjectionMatrix());
 
-        for (int i = 0; i < models.size(); i++)
+   	
+        for (uint i = 0; i < models.size(); i++)
         {
             Model* model = models[i];
             glBindVertexArray(model->meshes[0].vao);
@@ -57,7 +58,7 @@ namespace mtgraphics
 
     void ModelRenderer::loadMeshes(Model* model)
     {
-        for (int i = 0; i < model->meshes.size(); i++)
+        for (uint i = 0; i < model->meshes.size(); i++)
         {
             Mesh* mesh = &(model->meshes[0]);
             GLuint vao, vbo, ebo;

@@ -3,9 +3,9 @@
 namespace mtgraphics
 {
     Camera::Camera(GLuint screenWidth, GLuint screenHeight, GLuint fov) :
-        screenWidth(screenWidth),
+	fov(fov),
+	screenWidth(screenWidth),
         screenHeight(screenHeight),
-        fov(fov),
         up(glm::vec3(0.0f, 1.0f, 0.0f)),
         view(glm::vec3(0.0f, 0.0f, 1.0f))
     {

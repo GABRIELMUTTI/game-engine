@@ -4,9 +4,9 @@ namespace mtgraphics
 {
     Input::Input(GLFWwindow* windowHandle) :
         windowHandle(windowHandle),
-        OnKeyEvent(keyEvent), 
-        OnPointerEvent(pointerEvent),
-        cursorSensitivity(0.05f)
+	cursorSensitivity(0.05f),
+	OnKeyEvent(keyEvent), 
+	OnPointerEvent(pointerEvent)
     {
         glfwSetKeyCallback(windowHandle, &keyCallbackFunc);
         glfwSetCursorPosCallback(windowHandle, &mouseMoveCallback);
