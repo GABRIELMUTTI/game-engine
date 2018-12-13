@@ -1,0 +1,182 @@
+[
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-Wall",
+            "-Wextra",
+            "-std=c++17",
+            "-Wfatal-errors",
+            "-g",
+            "-fPIC",
+            "-w",
+            "-Iinclude",
+            "-I../utilities/include",
+            "-o",
+            "bin/libmtecs.so",
+            "src/mtecs/world/World.cpp"
+        ],
+        "directory": "/home/gabriel/Documents/projects/game-engine/mtecs",
+        "file": "src/mtecs/world/World.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-Wall",
+            "-Wextra",
+            "-std=c++17",
+            "-Wfatal-errors",
+            "-g",
+            "-fPIC",
+            "-w",
+            "-Iinclude",
+            "-I../utilities/include",
+            "-o",
+            "bin/libmtecs.so",
+            "src/mtecs/entity/EntityManager.cpp"
+        ],
+        "directory": "/home/gabriel/Documents/projects/game-engine/mtecs",
+        "file": "src/mtecs/entity/EntityManager.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-Wall",
+            "-Wextra",
+            "-std=c++17",
+            "-Wfatal-errors",
+            "-g",
+            "-fPIC",
+            "-w",
+            "-Iinclude",
+            "-I../utilities/include",
+            "-o",
+            "bin/libmtecs.so",
+            "src/mtecs/component/ComponentManager.cpp"
+        ],
+        "directory": "/home/gabriel/Documents/projects/game-engine/mtecs",
+        "file": "src/mtecs/component/ComponentManager.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-Wall",
+            "-Wextra",
+            "-std=c++17",
+            "-Wfatal-errors",
+            "-g",
+            "-fPIC",
+            "-w",
+            "-Iinclude",
+            "-I../utilities/include",
+            "-o",
+            "bin/libmtecs.so",
+            "src/mtecs/component/Mask.cpp"
+        ],
+        "directory": "/home/gabriel/Documents/projects/game-engine/mtecs",
+        "file": "src/mtecs/component/Mask.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-Wall",
+            "-Wextra",
+            "-std=c++17",
+            "-Wfatal-errors",
+            "-g",
+            "-fPIC",
+            "-w",
+            "-Iinclude",
+            "-I../utilities/include",
+            "-o",
+            "bin/libmtecs.so",
+            "src/mtecs/entity/Entity.cpp"
+        ],
+        "directory": "/home/gabriel/Documents/projects/game-engine/mtecs",
+        "file": "src/mtecs/entity/Entity.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-Wall",
+            "-Wextra",
+            "-std=c++17",
+            "-Wfatal-errors",
+            "-g",
+            "-fPIC",
+            "-w",
+            "-Iinclude",
+            "-I../utilities/include",
+            "-o",
+            "bin/libmtecs.so",
+            "src/mtecs/group/GroupManager.cpp"
+        ],
+        "directory": "/home/gabriel/Documents/projects/game-engine/mtecs",
+        "file": "src/mtecs/group/GroupManager.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-Wall",
+            "-Wextra",
+            "-std=c++17",
+            "-Wfatal-errors",
+            "-g",
+            "-fPIC",
+            "-w",
+            "-Iinclude",
+            "-I../utilities/include",
+            "-o",
+            "bin/libmtecs.so",
+            "src/mtecs/system/System.cpp"
+        ],
+        "directory": "/home/gabriel/Documents/projects/game-engine/mtecs",
+        "file": "src/mtecs/system/System.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-Wall",
+            "-Wextra",
+            "-std=c++17",
+            "-Wfatal-errors",
+            "-g",
+            "-fPIC",
+            "-w",
+            "-Iinclude",
+            "-I../utilities/include",
+            "-o",
+            "bin/libmtecs.so",
+            "src/mtecs/group/Group.cpp"
+        ],
+        "directory": "/home/gabriel/Documents/projects/game-engine/mtecs",
+        "file": "src/mtecs/group/Group.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-Wall",
+            "-Wextra",
+            "-std=c++17",
+            "-Wfatal-errors",
+            "-g",
+            "-fPIC",
+            "-w",
+            "-Iinclude",
+            "-I../utilities/include",
+            "-o",
+            "bin/libmtecs.so",
+            "src/mtecs/src/main.cpp"
+        ],
+        "directory": "/home/gabriel/Documents/projects/game-engine/mtecs",
+        "file": "src/mtecs/src/main.cpp"
+    }
+]

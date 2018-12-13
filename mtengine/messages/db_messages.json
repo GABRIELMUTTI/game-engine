@@ -1,0 +1,174 @@
+[
+    {
+        "name" : "component_added",
+        "args" :
+        {
+            "required" :
+            [
+                {
+                    "name" : "entity_id",
+                    "type" : "unsigned_int"
+                },
+    
+                {
+                    "name" : "component_mask",
+                    "type" : "unsigned_int"
+                }
+            ],
+
+            "optional" : []
+        }
+    },
+
+    {
+        "name" : "component_removed",
+        "args" :
+        {
+            "required" :
+            [
+                {
+                    "name" : "entity_id",
+                    "type" : "unsigned_int"
+                },
+    
+                {
+                    "name" : "component_mask",
+                    "type" : "unsigned_int"
+                }
+            ],
+
+            "optional" : []
+        }
+    },
+
+    {
+        "name" : "entity_created",
+        "args" :
+        {
+            "required" :
+            [
+                {
+                    "name" : "entity_id",
+                    "type" : "unsigned_int"
+                }
+            ],
+
+            "optional" : []
+        }
+    },
+
+    {
+        "name" : "entity_destroyed",
+        "args" :
+        {
+            "required" :
+            [
+                {
+                    "name" : "entity_id",
+                    "type" : "unsigned_int"
+                }
+            ],
+
+            "optional" : []
+        }
+    },
+
+    {
+        "name" : "system_enabled_changed",
+        "args" :
+        {
+            "required" :
+            [
+                {
+                    "name" : "system_id",
+                    "type" : "unsigned_int"
+                }
+            ],
+
+            "optional" : []
+        }
+    },
+
+    {
+        "name" : "system_awake_changed",
+        "args" :
+        {
+            "required" :
+            [
+                {
+                    "name" : "system_id",
+                    "type" : "unsigned_int"
+                }
+            ],
+
+            "optional" : []
+        }
+    },
+
+    {
+        "name" : "on_pointer_moved",
+        "args" :
+        {
+            "required" : [],
+            "optional" : []
+        }
+    },
+
+    {
+        "name" : "input_mapping_modified",
+        "args" : 
+        {
+            "required" : 
+            [
+                {
+                    "name" : "context_name",
+                    "type" : "string"
+                },
+    
+                {
+                    "name" : "input_type",
+                    "type" : "string"
+                },
+    
+                {
+                    "name" : "new_mapping",
+                    "type" : "string"
+                },
+    
+                {
+                    "name" : "new_event",
+                    "type" : "string"
+                }
+            ],
+
+            "optional" :
+            [
+                {
+                    "name" : "old_mapping",
+                    "type" : "string"
+                },
+    
+                {
+                    "name" : "old_event",
+                    "type" : "string"
+                }
+            ]
+        }
+    },
+
+    {
+        "name" : "system_added",
+        "args" :
+        {
+            "required" :
+            [
+                {
+                    "name" : "system_id",
+                    "type" : "unsigned_int"
+                }
+            ],
+
+            "optional" : []
+        }
+    }
+]

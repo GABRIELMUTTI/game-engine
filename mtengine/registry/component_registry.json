@@ -1,0 +1,11 @@
+{
+    "register_source_output" : "include/mtengine/factory/ComponentRegister.hpp",
+    "components" : 
+    [
+        "C_Transform",
+        "C_Input",
+        "C_FirstPersonMovement",
+        "C_Camera"
+    ]
+}
+
