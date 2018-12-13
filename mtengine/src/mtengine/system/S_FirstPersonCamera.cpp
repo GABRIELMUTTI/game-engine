@@ -70,10 +70,6 @@ namespace mtengine
             ComponentHandle<C_Transform> cTransform;
             for (Entity* entity : group->getEntities<C_Transform>(cTransform))
 	    {	    
-		//std::cout << "x: " << cTransform->position.x << "\ty: " << cTransform->position.y << "\tz: " << cTransform->position.z << std::endl;
-		//std::cout << "entity id _Camera: " << entity->getId() << std::endl;
-
-		//std::cout << "name: " << entity->getName() << std::endl;
 		camera->transform.translation = cTransform->position;
 		camera->updateViewMatrix();
             }

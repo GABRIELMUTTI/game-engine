@@ -27,13 +27,13 @@ namespace mtengine
 
     void ModelLoader::processNode(mtgraphics::Model* model, aiNode* node, const aiScene* scene)
     {
-        for (int i = 0; i < node->mNumMeshes; i++)
+        for (uint i = 0; i < node->mNumMeshes; i++)
         {
             aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
             model->meshes.push_back(convertMesh(scene, mesh));
         }
 
-        for (int i = 0; i < node->mNumChildren; i++)
+        for (uint i = 0; i < node->mNumChildren; i++)
         {
             processNode(model, node->mChildren[i], scene);
         }
@@ -44,7 +44,7 @@ namespace mtengine
         mtgraphics::Mesh convertedMesh;
 
         // Convert vertices.
-        for (int i = 0; i < mesh->mNumVertices; i++)
+        for (uint i = 0; i < mesh->mNumVertices; i++)
         {
             mtgraphics::Vertex vertex = mtgraphics::Vertex();
             vertex.position.x = mesh->mVertices[i].x;
@@ -62,9 +62,9 @@ namespace mtengine
         }
 
         // Convert faces/indices.
-        for (int i = 0; i < mesh->mNumFaces; i++)
+        for (uint i = 0; i < mesh->mNumFaces; i++)
         {
-            for (int j = 0; j < mesh->mFaces[i].mNumIndices; j++)
+            for (uint j = 0; j < mesh->mFaces[i].mNumIndices; j++)
             {
                 convertedMesh.indices.push_back(mesh->mFaces[i].mIndices[j]);
             }
