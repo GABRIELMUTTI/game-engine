@@ -15,15 +15,15 @@ namespace mtecs
 	
     public:
 	ComponentHandle() :
-	    componentPool(nullptr),
-	    index(0)
+	    index(0),
+	    componentPool(nullptr)
 	{
 	      
 	}
 	
 	ComponentHandle(const Pool<Component>* componentPool, unsigned int index) :
-	    componentPool(componentPool),
-	    index(index)
+	    index(index),
+	    componentPool(componentPool)
 	{
 
 	}
