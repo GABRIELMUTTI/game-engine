@@ -43,7 +43,6 @@ namespace mtengine
     void S_FirstPersonMovement::onBackwardCommand(Message message)
     {
         Entity* entity = entities->getEntity(message.getUnsignedInt("entity_id"));
-        auto cViewMovement = entity->getComponent<C_FirstPersonMovement>();
         auto cTransform = entity->getComponent<C_Transform>();
 
         cTransform->position -= camera->getView() * 0.5f;

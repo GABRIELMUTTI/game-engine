@@ -31,7 +31,7 @@ namespace mtengine
     {
 	KeyInput keyInput = KeyInput(input.key, input.key, input.scancode, input.action, input.mods);
 	
-        for (int i = 0; i < contexts.size(); i++)
+        for (uint i = 0; i < contexts.size(); i++)
         {
 	    contexts[i]->handleInput(keyInput);
         }
