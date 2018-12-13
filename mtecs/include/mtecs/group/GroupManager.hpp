@@ -32,7 +32,7 @@ namespace mtecs
 	{
 	    Mask mask = componentRegistry->getMask<Types ...>();
                 
-	    for (int i = 0; i < groups.size(); i++)
+	    for (uint i = 0; i < groups.size(); i++)
 	    {
 		if (groups[i]->getMask() == mask)
 		{

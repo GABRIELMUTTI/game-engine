@@ -50,7 +50,6 @@ namespace mtecs
 	template<class T>
 	ComponentHandle<T> getComponent(unsigned int entityId, const Mask& mask)
 	{
-	    std::type_index typeIndex = typeid(T);
 	    unsigned int poolIndex = mask.index();
 	    return ComponentHandle<T>(componentPools[poolIndex], entityId);
 	}
