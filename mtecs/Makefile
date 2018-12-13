@@ -1,5 +1,5 @@
 CXX  		:= g++
-CXX_FLAGS 	:= -Wall -Wextra -std=c++17 -Wfatal-errors -fdiagnostics-color -g -fPIC
+CXX_FLAGS 	:= -std=c++17 -fPIC -Wall -Wextra -Wfatal-errors -fdiagnostics-color -g
 LD_FLAGS 	:= -shared
 
 BIN		:= bin
