@@ -1,5 +1,5 @@
 CC		:= g++
-C_FLAGS 	:= -std=c++11 -Wall -Wextra -Wfatal-errors -w -g
+C_FLAGS 	:= -std=c++11 -Wfatal-errors -fdiagnostics-color -g
 
 DEPS		:= ../mtecs 	\
 		../mtgraphics 	\

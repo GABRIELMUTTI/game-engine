@@ -5,8 +5,8 @@
 #include "mtgraphics/input/PointerInput.hpp"
 #include "mtgraphics/graphic/WindowUserPointer.hpp"
 
-#include <utility/delegate/Event.hpp>
-#include <utility/property/EventProperty.hpp>
+#include <utilities/delegate/Event.hpp>
+#include <utilities/property/EventProperty.hpp>
 
 #include <glm/glm.hpp>
 

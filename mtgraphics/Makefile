@@ -1,5 +1,5 @@
 CC		:= g++
-C_FLAGS 	:= -std=c++17 -w -Wfatal-errors -g -fPIC
+C_FLAGS 	:= -std=c++17 -Wfatal-errors -fdiagnostics-color -g -fPIC
 LD_FLAGS 	:= -shared
 
 INCLUDES	:= include

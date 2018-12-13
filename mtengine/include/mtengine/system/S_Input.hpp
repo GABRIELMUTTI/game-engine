@@ -9,7 +9,7 @@
 
 #include <mtgraphics/input/Input.hpp>
 
-#include <utility/eventqueue/message/MessageQueue.hpp>
+#include <utilities/eventqueue/message/MessageQueue.hpp>
 
 #include <vector>
 #include <algorithm>

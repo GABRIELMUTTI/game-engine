@@ -5,7 +5,7 @@
 #include "mtgraphics/input/Input.hpp"
 #include "mtgraphics/graphic/Camera.hpp"
 
-#include <utility/property/StructureProperty.hpp>
+#include <utilities/property/StructureProperty.hpp>
 
 #include <glm/glm.hpp>
 
