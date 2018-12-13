@@ -3,10 +3,10 @@
 namespace mtgraphics
 {
     Window::Window(GLuint id, GLuint width, GLuint height, const GLchar* title) :
-        id(id),
         width(width),
         height(height),
         title(title),
+	id(id),
         OnFramebufferResize(framebufferResizeEvent)
     {
         windowHandle = glfwCreateWindow(width, height, title, NULL, NULL);
