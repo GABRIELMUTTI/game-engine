@@ -4,18 +4,19 @@ namespace mtengine
 {
     InputContext::InputContext(const std::string& name, unsigned int entityId, MessageQueue* messageQueue) :
         name(name),
-	entityId(entityId),
-        messageQueue(messageQueue)
+        messageQueue(messageQueue),
+	entityId(entityId)
     {
 
     }
 
     InputContext::InputContext(const std::string& name, unsigned int entityId, const KeyInputMap& inputMap, const PointerInputMap& pointerInputMap, MessageQueue* messageQueue) :
+
         name(name),
-	entityId(entityId),
         keyInputMapping(inputMap),
         pointerInputMapping(pointerInputMap),
-        messageQueue(messageQueue)
+        messageQueue(messageQueue),
+	entityId(entityId)
     {
 
     }
