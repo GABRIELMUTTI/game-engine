@@ -1,6 +1,6 @@
 CC		:= g++
 C_FLAGS 	:= -std=c++17 -fPIC -Wall -Wfatal-errors -fdiagnostics-color -g
-LD_FLAGS 	:= -shared
+LD_FLAGS 	:=
 
 INCLUDES	:= include
 
