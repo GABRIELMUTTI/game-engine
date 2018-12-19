@@ -14,7 +14,7 @@ namespace mtecs
         Message message = Message("component_added");
         message.addArgument("entity_id", entityId);
         message.addArgument("component_mask", mask.getMask());
-        
+
         messageQueue->send(message);
     }
 

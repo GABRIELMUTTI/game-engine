@@ -10,7 +10,7 @@ namespace mtecs
 	messageQueue(messageQueue),
         Entities(entities)
     {
-        
+
     }
 
 

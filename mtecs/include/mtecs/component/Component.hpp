@@ -7,7 +7,7 @@ namespace mtecs
     public:
 	virtual ~Component()
 	{
-				
+
 	}
     };
 }
