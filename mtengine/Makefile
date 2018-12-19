@@ -21,6 +21,7 @@ SRC		:= src/mtengine
 INCLUDE		:= $(foreach d, $(INCLUDES), -I$d)
 DEP		:= $(foreach d, $(DEPS), -I$d)
 LIB		:= $(foreach d, $(LIBS), -L$d)
+TEST		:= tests
 
 LIBRARIES	:= -lassimp -lmtecs -lmtgraphics
 
@@ -37,7 +38,7 @@ run:
 
 brun: clean all run
 
-$(BIN)/$(EXECUTABLE): $(SRC)/*/**
+$(BIN)/$(EXECUTABLE): $(SRC)/*/** $(TEST)/*
 	lua registry/CreateSystemRegister.lua
 	lua registry/CreateComponentRegister.lua
 	$(CC) $(C_FLAGS) $(INCLUDE) $(DEP) $(LIB) $^ -o $@ $(LD_FLAGS) $(LIBRARIES)

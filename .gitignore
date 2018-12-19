@@ -1,1 +1,6 @@
-*/bin/*
+*/bin/*.so
+*/GPATH
+*/GRTAGS
+*/GTAGS
+*/.dir-locals.el
+*/compile_commands.json
