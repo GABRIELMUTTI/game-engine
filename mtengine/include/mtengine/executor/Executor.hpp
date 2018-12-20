@@ -1,5 +1,7 @@
 #pragma once
 
+#include "mtengine/identifier/UID.hpp"
+
 #include <utilities/delegate/Delegate.hpp>
 
 #include <unordered_map>
@@ -13,7 +15,7 @@ namespace mtengine
 	typedef void(*TypeConversionProc)(T);
 	    
     private:
-	std::unordered_map<std::string, TypeConversionProc> typeConversionProcedures;
+	std::unordered_map<const UID, TypeConversionProc> typeConversionProcedures;
 
 	template<typename U, void(*Func)(U)>
 	static inline void typeConversionStub(T obj)
@@ -23,17 +25,17 @@ namespace mtengine
 	}
 	    
     public:
-	void execute(const std::string& key, T obj)
+	void execute(const UID uid, T obj)
 	{
-	    TypeConversionProc typeProcedure = typeConversionProcedures[key];
+	    TypeConversionProc typeProcedure = typeConversionProcedures[uid];
 
 	    typeProcedure(obj);
 	}
 
 	template<typename U, void(*Function)(U)>
-	void registerType(const std::string& key)
+	void registerType(const UID uid)
 	{
-	    typeConversionProcedures[key] = &typeConversionStub<U, Function>;
+	    typeConversionProcedures[uid] = &typeConversionStub<U, Function>;
 	}
     };
 
