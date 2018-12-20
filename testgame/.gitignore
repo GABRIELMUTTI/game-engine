@@ -1,0 +1,6 @@
+bin/*
+.dir-locals.el
+compile_commands.json
+GPATH
+GTAGS
+GRTAGS
