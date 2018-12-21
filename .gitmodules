@@ -1,0 +1,3 @@
+[submodule "deps/MetaStuff"]
+	path = deps/MetaStuff
+	url = https://github.com/eliasdaler/MetaStuff.git
