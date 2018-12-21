@@ -17,10 +17,10 @@ namespace mtengine
 	
 	
         // Register library's types.
-        ComponentRegister* libraryComponentRegister = new ComponentRegister();
+        ComponentRegister* libraryComponentRegister = new ComponentRegister(componentUIDs);
         libraryComponentRegister->registerTypes(componentFactory);
-	
-        SystemRegister* librarySystemRegister = new SystemRegister();
+
+        SystemRegister* librarySystemRegister = new SystemRegister(systemUIDs);
         librarySystemRegister->registerTypes(systemFactory);
 
         // Register user types.

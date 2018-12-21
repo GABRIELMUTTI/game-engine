@@ -32,8 +32,7 @@ namespace mtengine
 
 	Factory<mtecs::Component> componentFactory;
 	Factory<System, int> systemFactory;
-	
-	
+
 	mtgraphics::Graphics graphics;
 	mtecs::World world;
 	AssetManager assetManager;
