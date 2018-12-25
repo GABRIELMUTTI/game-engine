@@ -1,22 +1,20 @@
 #pragma once
 
-#include "mtengine/identifier/UID.hpp"
-
 #include <unordered_map>
 #include <string>
 
-namespace mtengine
+namespace utility
 {
-    template<class BaseType, class ... FuncArgs>
+    template<class TBase, typename TId, class ... FuncArgs>
     class Factory
     {
-        typedef BaseType*(*CreateFunc)(FuncArgs ...);
+        typedef TBase*(*CreateFunc)(FuncArgs ...);
         
     private:
-	std::unordered_map<UID, CreateFunc> registry;
+	std::unordered_map<TId, CreateFunc> registry;
 	
 	template<class T>
-	static BaseType* creationFunction(FuncArgs ... args)
+	static TBase* creationFunction(FuncArgs ... args)
 	{
 	    return new T(args ...);
 	}
@@ -28,12 +26,12 @@ namespace mtengine
 	}
 
 	template<class T>
-	void registerType(UID uid)
+	void registerType(TId uid)
 	{
 	    registry[uid] = &creationFunction<T>;
 	}
 
-	BaseType* create(UID uid, FuncArgs ... args)
+	TBase* create(TId uid, FuncArgs ... args)
 	{
 	    auto it = registry.find(uid);
 	    if (it != registry.end())

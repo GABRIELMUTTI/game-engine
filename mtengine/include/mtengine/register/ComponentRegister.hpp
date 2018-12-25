@@ -20,8 +20,9 @@ for type in jsonData:
 #include "mtengine/component/C_Camera.hpp"
 /// [[[end]]]
 
-#include "mtengine/factory/IRegister.hpp"
-#include "mtengine/identifier/UIDGenerator.hpp"
+#include "utilities/factory/Factory.hpp"
+#include "utilities/factory/IRegister.hpp"
+#include "utilities/identifier/UIDGenerator.hpp"
 
 namespace mtengine
 {
