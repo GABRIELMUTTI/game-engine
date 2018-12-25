@@ -4,13 +4,18 @@ LD_FLAGS 	:= -shared
 
 INCLUDES	:= include
 
-DEPS		:= ../mtecs/include 	\
-		../mtgraphics/include 	\
-		../utilities/include 	\
-		../deps 		\
-		../deps/boost
+DEPS		:= ../mtecs 	\
+		../mtgraphics 	\
 
-LIBS := lib 				\
+
+INCLUDES	:= include 		\
+		../mtecs/include 	\
+		../mtgraphics/include 	\
+		../utilities/include	\
+		../deps 		\
+		..deps/boost
+
+LIBS := 	lib 			\
 		../mtgraphics/bin 	\
 		../mtecs/bin 		\
 		../deps/assimp/bin 	\
@@ -19,7 +24,6 @@ LIBS := lib 				\
 BIN		:= bin
 SRC		:= src/mtengine
 INCLUDE		:= $(foreach d, $(INCLUDES), -I$d)
-DEP		:= $(foreach d, $(DEPS), -I$d)
 LIB		:= $(foreach d, $(LIBS), -L$d)
 TEST		:= tests
 
@@ -33,10 +37,19 @@ all: $(BIN)/$(EXECUTABLE)
 clean:
 	$(RM) $(BIN)/$(EXECUTABLE)
 
+call: clean
+	@echo "Cleaning dependencies:"	
+	@$(foreach d, $(DEPS), cd $(d) && make -s clean && echo "\tCleaning $(d).";)
+
 run:
 	./$(BIN)/$(EXECUTABLE)
 
 brun: clean all run
+
+bdep:
+	@echo "Building dependencies:"
+	@$(foreach d, $(DEPS), cd $(d) && echo "\tBuilding $(d)." && make -s all;)
+
 
 $(BIN)/$(EXECUTABLE): $(SRC)/*/** $(TEST)/*
 	python -m cogapp -r include/mtengine/factory/ComponentRegister.hpp

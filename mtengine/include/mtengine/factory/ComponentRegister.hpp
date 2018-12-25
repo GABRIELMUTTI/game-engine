@@ -41,12 +41,17 @@ namespace mtengine
 	{
 	    /* [[[cog
 	       for type in jsonData:
+	           cog.outl("uidGenerator->registerType<%s>();" % type)
 	           cog.outl("factory.registerType<%s>(uidGenerator->getUID<%s>());" % (type, type))
 
 	       ]]] */
+	    uidGenerator->registerType<C_Transform>();
 	    factory.registerType<C_Transform>(uidGenerator->getUID<C_Transform>());
+	    uidGenerator->registerType<C_Input>();
 	    factory.registerType<C_Input>(uidGenerator->getUID<C_Input>());
+	    uidGenerator->registerType<C_FirstPersonMovement>();
 	    factory.registerType<C_FirstPersonMovement>(uidGenerator->getUID<C_FirstPersonMovement>());
+	    uidGenerator->registerType<C_Camera>();
 	    factory.registerType<C_Camera>(uidGenerator->getUID<C_Camera>());
 	    // [[[end]]]
 	}
