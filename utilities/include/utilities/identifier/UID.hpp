@@ -2,7 +2,7 @@
 
 #include <unordered_map>
 
-namespace mtengine
+namespace utility
 {
     class UID
     {
@@ -55,7 +55,7 @@ namespace mtengine
 
 namespace std
 {
-    using mtengine::UID;
+    using utility::UID;
     
     template<>
     struct hash<UID>

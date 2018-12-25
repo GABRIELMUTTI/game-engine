@@ -1,11 +1,11 @@
 #pragma once
 
-#include "mtengine/identifier/UID.hpp"
+#include "UID.hpp"
 
 #include <unordered_map>
 #include <typeindex>
 
-namespace mtengine
+namespace utility
 {
     class UIDGenerator
     {
@@ -23,8 +23,12 @@ namespace mtengine
 	template<class T>
 	void registerType()
 	{
-	    uids[typeid(T)] = UID(numRegistered);
-	    numRegistered++;
+	    auto it = uids.find(typeid(T));
+	    if (it != uids.end())
+	    {
+		uids[typeid(T)] = UID(numRegistered);
+		numRegistered++;
+	    }
 	}
 
 	template<class T>
