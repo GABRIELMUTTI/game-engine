@@ -28,12 +28,12 @@ namespace mtengine
 	}
 
 	template<class T>
-	void registerType(const UID uid)
+	void registerType(UID uid)
 	{
 	    registry[uid] = &creationFunction<T>;
 	}
 
-	BaseType* create(const UID uid, FuncArgs ... args)
+	BaseType* create(UID uid, FuncArgs ... args)
 	{
 	    auto it = registry.find(uid);
 	    if (it != registry.end())

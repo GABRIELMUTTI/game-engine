@@ -1,12 +1,8 @@
-{
-    "register_source_output" : "include/mtengine/factory/SystemRegister.hpp",
-    "source_template" : "mtengine/registry/SystemRegisterTemplate",
-    "systems" : 
-    [
-        "S_FirstPersonCamera",
-        "S_FirstPersonMovement",
-        "S_Input",
-        "S_ModelRenderer"
-    ]
-}
+[
+    "S_FirstPersonCamera",
+    "S_FirstPersonMovement",
+    "S_Input",
+    "S_ModelRenderer"
+]
+
 

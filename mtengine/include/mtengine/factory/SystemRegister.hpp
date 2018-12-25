@@ -1,22 +1,54 @@
-#include "mtengine/factory/IRegister.hpp"
+#pragma once
+
+/* [[[cog
+import json
+
+systemTypesFile = open("/home/gabriel/Documents/projects/game-engine/mtengine/registry/system_registry.json")
+jsonStr = systemTypesFile.read()
+jsonData = json.loads(jsonStr)
+
+]]] */
+// [[[end]]]
+
+/* [[[cog
+for type in jsonData:
+    cog.outl("#include \"mtengine/system/%s.hpp\"" % type)
+]]] */
 #include "mtengine/system/S_FirstPersonCamera.hpp"
 #include "mtengine/system/S_FirstPersonMovement.hpp"
 #include "mtengine/system/S_Input.hpp"
 #include "mtengine/system/S_ModelRenderer.hpp"
-        namespace mtengine
-        {
-            class SystemRegister : public IRegister<System, int>
-            {
-                public:
-                    SystemRegister()
-                    {
+/// [[[end]]]
 
-                    }
+#include "mtengine/factory/IRegister.hpp"
+#include "mtengine/identifier/UIDGenerator.hpp"
 
-                    void registerTypes(Factory<System, int>* factory)
-                    {
-factory->registerType<S_FirstPersonCamera>("S_FirstPersonCamera");
-factory->registerType<S_FirstPersonMovement>("S_FirstPersonMovement");
-factory->registerType<S_Input>("S_Input");
-factory->registerType<S_ModelRenderer>("S_ModelRenderer");
-}};}
+namespace mtengine
+{
+    class SystemRegister : public IRegister<System, uint>
+    {
+    private:
+	UIDGenerator* uidGenerator;
+
+    public:
+	SystemRegister(UIDGenerator& uidGenerator) :
+	    uidGenerator(&uidGenerator)
+	{
+	    
+	}
+	
+	void registerTypes(Factory<System, uint>& factory)
+	{
+	    /* [[[cog
+	       for type in jsonData:
+	           cog.outl("factory.registerType<%s>(uidGenerator->getUID<%s>());" % (type, type))
+
+	       ]]] */
+	    factory.registerType<S_FirstPersonCamera>(uidGenerator->getUID<S_FirstPersonCamera>());
+	    factory.registerType<S_FirstPersonMovement>(uidGenerator->getUID<S_FirstPersonMovement>());
+	    factory.registerType<S_Input>(uidGenerator->getUID<S_Input>());
+	    factory.registerType<S_ModelRenderer>(uidGenerator->getUID<S_ModelRenderer>());
+	    // [[[end]]]
+	}
+    };
+}

@@ -8,6 +8,6 @@ namespace mtengine
     class IRegister
     {
     public:
-	virtual void registerTypes(Factory<BaseType, FuncArgs ...>* factory) = 0;
+	virtual void registerTypes(Factory<BaseType, FuncArgs ...>& factory) = 0;
     };
 }

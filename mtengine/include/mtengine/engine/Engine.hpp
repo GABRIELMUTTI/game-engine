@@ -27,11 +27,11 @@ namespace mtengine
 	UIDGenerator componentUIDs;
 	UIDGenerator systemUIDs;
 	
-	IRegister componentRegister;
-	IRegister systemRegister;
+	IRegister<Component>* componentRegister;
+	IRegister<System, unsigned int>* systemRegister;
 
 	Factory<mtecs::Component> componentFactory;
-	Factory<System, int> systemFactory;
+	Factory<System, unsigned int> systemFactory;
 
 	mtgraphics::Graphics graphics;
 	mtecs::World world;
@@ -48,9 +48,9 @@ namespace mtengine
 	mtgraphics::Graphics* getGraphics();
 	mtecs::World* getWorld();
 	AssetManager* getAssetManager();
-
+	
 	void setComponentRegister(IRegister<mtecs::Component>* componentRegister);
-	void setSystemRegister(IRegister<System, int>* systemRegister);
+	void setSystemRegister(IRegister<System, unsigned int>* systemRegister);
     };
 }
 
