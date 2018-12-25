@@ -15,7 +15,7 @@ namespace mtengine
 	typedef void(*TypeConversionProc)(T);
 	    
     private:
-	std::unordered_map<const UID, TypeConversionProc> typeConversionProcedures;
+	std::unordered_map<UID, TypeConversionProc> typeConversionProcedures;
 
 	template<typename U, void(*Func)(U)>
 	static inline void typeConversionStub(T obj)
@@ -25,7 +25,7 @@ namespace mtengine
 	}
 	    
     public:
-	void execute(const UID uid, T obj)
+	void execute(UID uid, T obj)
 	{
 	    TypeConversionProc typeProcedure = typeConversionProcedures[uid];
 
@@ -33,7 +33,7 @@ namespace mtengine
 	}
 
 	template<typename U, void(*Function)(U)>
-	void registerType(const UID uid)
+	void registerType(UID uid)
 	{
 	    typeConversionProcedures[uid] = &typeConversionStub<U, Function>;
 	}

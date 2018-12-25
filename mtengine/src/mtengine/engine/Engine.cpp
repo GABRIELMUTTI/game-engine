@@ -5,8 +5,8 @@ namespace mtengine
     Engine::Engine() :
         componentRegister(nullptr),
         systemRegister(nullptr),
-	componentFactory(Factory<mtecs::Component>(componentUIDs))
-	system(Factory<mtecs::Component>(systemUIDs))
+	componentFactory(Factory<mtecs::Component>()),
+	systemFactory(Factory<System, unsigned int>())
     {
 
     }
@@ -17,21 +17,21 @@ namespace mtengine
 	
 	
         // Register library's types.
-        ComponentRegister* libraryComponentRegister = new ComponentRegister();
+        ComponentRegister* libraryComponentRegister = new ComponentRegister(componentUIDs);
         libraryComponentRegister->registerTypes(componentFactory);
-	
-        SystemRegister* librarySystemRegister = new SystemRegister();
+
+        SystemRegister* librarySystemRegister = new SystemRegister(systemUIDs);
         librarySystemRegister->registerTypes(systemFactory);
 
         // Register user types.
         if (componentRegister != nullptr)
         {
-            componentRegister->registerTypes(&componentFactory);
+            componentRegister->registerTypes(componentFactory);
         }
 
         if (systemRegister != nullptr)
         {
-            systemRegister->registerTypes(&systemFactory);
+            systemRegister->registerTypes(systemFactory);
         }
         
         // Initialize asset manager.
@@ -50,8 +50,8 @@ namespace mtengine
 	
 
         // Initialize world;        
-        world.addSystem(systemFactory.create("S_Input", 0));
-        world.addSystem(systemFactory.create("S_ModelRenderer", 1));
+        world.addSystem(systemFactory.create(systemUIDs.getUID<S_Input>(), 0));
+        world.addSystem(systemFactory.create(systemUIDs.getUID<S_ModelRenderer>(), 1));
 
 	world.initialize();
     }
@@ -91,7 +91,7 @@ namespace mtengine
         this->componentRegister = componentRegister;
     }
 
-    void Engine::setSystemRegister(IRegister<System, int>* systemRegister)
+    void Engine::setSystemRegister(IRegister<System, unsigned int>* systemRegister)
     {
         this->systemRegister = systemRegister;
     }

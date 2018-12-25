@@ -48,17 +48,17 @@ int main()
 {
     Executor<Component*> executer;
     
-    executer.registerType<C_Transform*, &testFunction<C_Transform>>("C_Transform");
-    executer.registerType<C_Camera*, &testFunction<C_Camera>>("C_Camera");
+    executer.registerType<C_Transform*, &testFunction<C_Transform>>(0);
+    executer.registerType<C_Camera*, &testFunction<C_Camera>>(1);
 
 
     Component* baseTransform = new C_Transform();
     Component* baseCamera = new C_Camera();
 
     std::cout << "With Executor::" << std::endl;
-    executer.execute("C_Transform", baseTransform);
+    executer.execute(0, baseTransform);
     std::cout << "Camera::" << std::endl;
-    executer.execute("C_Camera", baseCamera);
+    executer.execute(1, baseCamera);
 
 
     

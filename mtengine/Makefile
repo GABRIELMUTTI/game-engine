@@ -39,6 +39,6 @@ run:
 brun: clean all run
 
 $(BIN)/$(EXECUTABLE): $(SRC)/*/** $(TEST)/*
-	lua registry/CreateSystemRegister.lua
-	lua registry/CreateComponentRegister.lua
+	python -m cogapp -r include/mtengine/factory/ComponentRegister.hpp
+	python -m cogapp -r include/mtengine/factory/SystemRegister.hpp
 	$(CC) $(C_FLAGS) $(INCLUDE) $(DEP) $(LIB) $^ -o $@ $(LD_FLAGS) $(LIBRARIES)

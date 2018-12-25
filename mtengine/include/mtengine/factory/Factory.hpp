@@ -1,6 +1,5 @@
 #pragma once
 
-#include "mtengine/identifier/UIDGenerator.hpp"
 #include "mtengine/identifier/UID.hpp"
 
 #include <unordered_map>
@@ -15,8 +14,6 @@ namespace mtengine
         
     private:
 	std::unordered_map<UID, CreateFunc> registry;
-	UIDGenerator& uidGenerator;
-
 	
 	template<class T>
 	static BaseType* creationFunction(FuncArgs ... args)
@@ -25,19 +22,18 @@ namespace mtengine
 	}
 
     public:
-	Factory(UIDGenerator& uidGenerator) :
-	    uidGenerator(uidGenerator)
+	Factory()
 	{
 		
 	}
 
 	template<class T>
-	void registerType()
+	void registerType(UID uid)
 	{
-	    registry[uidGenerator.getUID<T>()] = &creationFunction<T>;
+	    registry[uid] = &creationFunction<T>;
 	}
 
-	BaseType* create(const UID uid, FuncArgs ... args)
+	BaseType* create(UID uid, FuncArgs ... args)
 	{
 	    auto it = registry.find(uid);
 	    if (it != registry.end())

@@ -1,19 +1,26 @@
 #pragma once
 
+#include <unordered_map>
+
 namespace mtengine
 {
     class UID
     {
-    private:
+    public:
 	unsigned int id;
 
-    public:
+	UID() :
+	    id(0)
+	{
+	    
+	}
+	
 	UID(unsigned int id) :
 	    id(id)
 	{
 	    
 	}
-
+	
 	bool operator ==(const UID& other) const
 	{
 	    return id == other.id;
@@ -23,7 +30,7 @@ namespace mtengine
 	{
 	    return id != other.id;
 	}
-
+	
 	bool operator <(const UID& other) const
 	{
 	    return id < other.id;
@@ -42,6 +49,20 @@ namespace mtengine
 	bool operator >=(const UID& other) const
 	{
 	    return id >= other.id;
+	}
+    };
+}
+
+namespace std
+{
+    using mtengine::UID;
+    
+    template<>
+    struct hash<UID>
+    {
+	std::size_t operator()(const UID& uid) const
+	{
+	    return std::hash<unsigned int>()(uid.id);
 	}
     };
 }
