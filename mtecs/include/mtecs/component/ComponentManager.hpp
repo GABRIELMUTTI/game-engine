@@ -35,7 +35,7 @@ namespace mtecs
 	    {
 		componentPools.resize(index + 1, nullptr);
 	    }
-		
+	    
 	    componentPools[index] = newPool;
 	}
 

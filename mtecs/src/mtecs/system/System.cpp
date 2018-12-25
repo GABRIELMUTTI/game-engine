@@ -5,7 +5,7 @@ namespace mtecs
     System::System(unsigned int id) :
         id(id),
         enabled(true),
-       awake(true)
+	awake(true)
     {
 
     }

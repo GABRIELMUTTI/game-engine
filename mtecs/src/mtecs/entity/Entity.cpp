@@ -8,7 +8,7 @@ namespace mtecs
         componentManager(componentManager),
         componentRegistry(componentRegistry)
     {
-
+	
     }
 
     unsigned int Entity::getId()

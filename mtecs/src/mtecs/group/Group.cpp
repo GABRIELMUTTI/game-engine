@@ -6,7 +6,7 @@ namespace mtecs
         mask(mask),
 	componentRegistry(componentRegistry)
     {
-	
+
     }
 
     Entity* Group::get(unsigned int index)

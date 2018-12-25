@@ -7,6 +7,7 @@
 #include "mtengine/factory/ComponentRegister.hpp"
 #include "mtengine/loader/ModelLoader.hpp"
 #include "mtengine/resource/AssetManager.hpp"
+#include "mtengine/identifier/UIDGenerator.hpp"
 
 #include <mtecs/world/World.hpp>
 #include <mtecs/component/Component.hpp>
@@ -23,11 +24,16 @@ namespace mtengine
     class Engine
     {
     private:
-	IRegister<mtecs::Component>* componentRegister;
-	IRegister<System, int>* systemRegister;
+	UIDGenerator componentUIDs;
+	UIDGenerator systemUIDs;
+	
+	IRegister componentRegister;
+	IRegister systemRegister;
 
 	Factory<mtecs::Component> componentFactory;
 	Factory<System, int> systemFactory;
+	
+	
 	mtgraphics::Graphics graphics;
 	mtecs::World world;
 	AssetManager assetManager;

@@ -4,19 +4,24 @@ namespace mtengine
 {
     Engine::Engine() :
         componentRegister(nullptr),
-        systemRegister(nullptr)
+        systemRegister(nullptr),
+	componentFactory(Factory<mtecs::Component>(componentUIDs))
+	system(Factory<mtecs::Component>(systemUIDs))
     {
 
     }
 
     void Engine::initialize()
     {
+	// Register components.
+	
+	
         // Register library's types.
         ComponentRegister* libraryComponentRegister = new ComponentRegister();
-        libraryComponentRegister->registerTypes(&componentFactory);
+        libraryComponentRegister->registerTypes(componentFactory);
 	
         SystemRegister* librarySystemRegister = new SystemRegister();
-        librarySystemRegister->registerTypes(&systemFactory);
+        librarySystemRegister->registerTypes(systemFactory);
 
         // Register user types.
         if (componentRegister != nullptr)
