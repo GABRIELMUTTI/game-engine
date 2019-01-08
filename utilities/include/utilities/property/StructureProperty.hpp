@@ -14,17 +14,17 @@ namespace utility
             StructureProperty(T& structure) :
                 structure(structure) {}
 
-            Iterator begin()
+            Iterator begin() const
             {
                 return structure.begin();
             }
 
-            Iterator end()
+            Iterator end() const
             {
                 return structure.end();
             }
 
-            std::size_t size()
+            std::size_t size() const
             {
                 return structure.size();
             }

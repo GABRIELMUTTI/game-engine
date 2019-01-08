@@ -2,45 +2,46 @@
 
 namespace mtecs
 {
-    Group::Group(const Mask& mask, ComponentRegistry* componentRegistry) :
-        mask(mask),
+    Group::Group(const Mask& mask, const internal::ComponentManager& componentManager, internal::ComponentRegistry& componentRegistry) :
+	mask(mask),
+	componentManager(componentManager),
 	componentRegistry(componentRegistry)
     {
 
     }
 
-    Entity* Group::get(unsigned int index)
+    Entity* Group::get(uint index) const
     {
-        return entities[index];
+	return entities[index];
     }
 
     void Group::add(Entity* entity)
     {
-        entities.push_back(entity);
+	entities.push_back(entity);
     }
 
     void Group::remove(Entity* entity)
     {
-        entities.erase(std::remove(entities.begin(), entities.end(), entity), entities.end());
+	entities.erase(std::remove(entities.begin(), entities.end(), entity), entities.end());
     }
 
-    bool Group::entityBelongsToGroup(Entity* entity)
+    bool Group::entityBelongsToGroup(const Entity& entity) const
     {
-        return entity->hasComponents(mask);
+	return entity.hasComponents(mask);
     }
 
-    bool Group::hasComponents(const Mask& componentMask, Mask::Has has)
+    bool Group::hasComponents(const Mask& componentMask, Mask::Has has) const
     {
-        return mask.has(componentMask, has);
+	return mask.has(componentMask, has);
     }
 
-    Mask Group::getMask()
+    Mask Group::getMask() const
     {
-        return mask;
+	return mask;
     }
 
-    const std::vector<Entity*>& Group::getEntities()
+    const std::vector<Entity*>& Group::getEntities() const
     {
-        return entities;
+	return entities;
     }
 }

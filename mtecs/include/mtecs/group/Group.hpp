@@ -1,57 +1,46 @@
 #pragma once
 
+#include "mtecs/typedef/Typedef.hpp"
 #include "mtecs/entity/Entity.hpp"
 #include "mtecs/component/Mask.hpp"
-#include "mtecs/group/GroupComponentIterator.hpp"
-#include "mtecs/group/GroupComponentView.hpp"
 #include "mtecs/component/ComponentHandle.hpp"
+#include "mtecs/component/ComponentManager.hpp"
 #include "mtecs/component/ComponentRegistry.hpp"
+#include "mtecs/group/GroupComponentView.hpp"
+
+#include <vector>
+#include <algorithm>
 
 namespace mtecs
 {
     class Group
     {
-        typedef std::vector<Entity*> Entities;
+	typedef std::vector<Entity*> Entities;
 
     private:
 	Mask mask;
-	std::vector<Entity*> entities;
-	mtecs::ComponentRegistry* componentRegistry;
-
-	template<class TFirst, class TSecond, class ... Rest>
-	void getMasks(std::vector<Mask>& masks)
-	{
-	    getMasks<TFirst>(masks);
-	    getMasks<TSecond, Rest ...>(masks);
-	}
-
-	template<class Type>
-	void getMasks(std::vector<Mask>& masks)
-	{
-	    masks.push_back(componentRegistry->getMask<Type>());
-	}
-
+	Entities entities;
+	const internal::ComponentManager& componentManager;
+	internal::ComponentRegistry& componentRegistry;
+	
     public:
-	Group(const Mask& mask, ComponentRegistry* componentRegistry);
+	Group(const Mask& mask, const internal::ComponentManager& componentManager, internal::ComponentRegistry& componentRegistry);
 
-	Entity* get(unsigned int index);
+	Entity* get(uint index) const;
 	void add(Entity* entity);
 	void remove(Entity* entity);
 
-	bool entityBelongsToGroup(Entity* entity);
-	bool hasComponents(const Mask& componentMask, Mask::Has has);
+	bool entityBelongsToGroup(const Entity& entity) const;
+	bool hasComponents(const Mask& componentMask, Mask::Has has) const;
 
-	Mask getMask();
+	Mask getMask() const;
 
-	const Entities& getEntities();
+	const Entities& getEntities() const;
 
 	template<class ... Components>
 	GroupComponentView<Components ...> getEntities(ComponentHandle<Components>& ... handles)
 	{
-	    std::vector<Mask> masks;
-	    getMasks<Components ...>(masks);
-                
-	    return GroupComponentView<Components ...>(entities, masks, handles ...);
+	    return GroupComponentView<Components ...>(entities, handles ..., componentManager, componentRegistry);
 	}
     };
 }

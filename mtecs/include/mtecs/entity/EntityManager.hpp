@@ -1,42 +1,32 @@
 #pragma once
 
-#include "mtecs/component/ComponentRegistry.hpp"
-
+#include "mtecs/typedef/Typedef.hpp"
 #include "mtecs/entity/Entity.hpp"
 
-#include <utilities/delegate/Event.hpp>
-#include <utilities/eventqueue/message/MessageQueue.hpp>
-#include <utilities/property/EventProperty.hpp>
 #include <utilities/property/StructureProperty.hpp>
-
 
 #include <vector>
 #include <string>
+#include <algorithm>
 
 namespace mtecs
 {
-    class EntityManager
+    namespace internal
     {
-    private:
-	std::vector<Entity*> entities;
-	std::vector<unsigned int> freeFragmentedIndexes;
+	class EntityManager
+	{
+	private:
+	    std::vector<Entity*> entities;
+	    std::vector<uint> freeFragmentedIndexes;
 
-	ComponentRegistry* componentRegistry;
-	ComponentManager* componentManager;
+	public:
+	    const utility::StructureProperty<std::vector<Entity*>> Entities;
 
-	utility::MessageQueue* messageQueue;
-
-    public:
-	utility::StructureProperty<std::vector<Entity*>> Entities;
-
-	EntityManager(ComponentManager* componentManager, ComponentRegistry* componentRegistry, 
-		      utility::MessageQueue* messageQueue);
+	    EntityManager();
             
-	Entity* createEntity(const std::string& name);
-	void destroyEntity(Entity* entity);
-
-	Entity* getEntity(int entityId);
-
-
-    };
+	    Entity* createEntity(const std::string& name);
+	    void destroyEntity(uint entityId);
+	    Entity* getEntity(uint entityId);
+	};		
+    }
 }

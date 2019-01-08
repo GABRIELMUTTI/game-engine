@@ -2,18 +2,17 @@
 
 namespace utility
 {
-    template<class Collection, class Iterator>
+    template<class TIterator>
     class View
     {
-        public:
-            Iterator begin()
-            {
-                return static_cast<Derived*>(this)->begin();
-            }
+	TIterator begin()
+	{
+	    return static_cast<TDerived*>(this)->begin();
+	}
 
-            Iterator end()
-            {
-                return static_cast<Derived*>(this)->end();
-            }
+	TIterator end()
+	{
+	    return static_cast<TDerived*>(this)->end();
+	}
     };
 }
