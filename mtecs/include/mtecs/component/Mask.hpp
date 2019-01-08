@@ -1,5 +1,7 @@
 #pragma once
 
+#include "mtecs/typedef/Typedef.hpp"
+
 #include <cmath>
 
 namespace mtecs
@@ -8,7 +10,7 @@ namespace mtecs
     {
     private:
 	int mask;
-	unsigned int maskIndex;
+	uint maskIndex;
 
 	void updateIndex();
 	
@@ -21,7 +23,7 @@ namespace mtecs
 	void update(const Mask& addition);
 	void remove(const Mask& deduction);
 	bool has(const Mask& mask, Has has = Has::All) const;
-	unsigned int index() const;
+	uint index() const;
 	int getMask() const;
 
             

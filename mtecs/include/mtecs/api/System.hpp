@@ -1,39 +1,21 @@
 #pragma once
 
-#include "mtecs/typedef/Typedef.hpp"
-#include "mtecs/entity/EntityManager.hpp"
-#include "mtecs/entity/Entity.hpp"
-#include "mtecs/component/ComponentManager.hpp"
-#include "mtecs/component/ComponentRegistry.hpp"
-#include "mtecs/component/ComponentHandle.hpp"
-#include "mtecs/system/SystemManager.hpp"
-#include "mtecs/group/GroupManager.hpp"
 #include "mtecs/system/ISystem.hpp"
 #include "mtecs/api/Behaviour.hpp"
-#include "mtecs/api/SystemSetter.hpp"
-
-#include <string>
 
 namespace mtecs
 {
-    class World
+    class System : public internal::ISystem
     {
     private:
-	internal::EntityManager entityManager;
-	internal::ComponentManager componentManager;
-	internal::ComponentRegistry componentRegistry;
-	internal::GroupManager groupManager;
-	internal::SystemManager systemManager;
-	internal::SystemSetter systemSetter;
 	internal::Behaviour* behaviour;
-
+	
     public:
-	World();
-
-	void update(float deltaTime);
-
-	internal::Behaviour* getBehaviour();
-
+	void setBehaviour(internal::Behaviour& behaviour)
+	{
+	    this->behaviour = &behaviour;
+	}
+	
 	// Entity API:
 	inline Entity* createEntity(const std::string& name)
 	{

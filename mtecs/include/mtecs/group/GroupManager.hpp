@@ -4,44 +4,39 @@
 #include "mtecs/entity/EntityManager.hpp"
 #include "mtecs/component/ComponentRegistry.hpp"
 
-#include <utilities/eventqueue/message/MessageQueue.hpp>
-
-using utility::MessageQueue;
-using utility::Message;
-
 namespace mtecs
 {
-    class GroupManager
+    namespace internal
     {
-    private:
-	std::vector<Group*> groups;
-	EntityManager* entityManager;
-	MessageQueue* messageQueue;
-	ComponentRegistry* componentRegistry;
-
-	void onComponentAdded(Message message);
-	void onComponentRemoved(Message message);
-
-	void createGroup(const Mask& mask);
-
-    public:
-	GroupManager(EntityManager* entityManager, ComponentRegistry* componentRegistry, MessageQueue* messageQueue);
-
-	template<class ... Types>
-	Group* getGroup()
+	class GroupManager
 	{
-	    Mask mask = componentRegistry->getMask<Types ...>();
-                
-	    for (uint i = 0; i < groups.size(); i++)
-	    {
-		if (groups[i]->getMask() == mask)
-		{
-		    return groups[i];
-		}
-	    }
+	private:
+	    std::vector<Group*> groups;
+	    const EntityManager& entityManager;
+	    const ComponentManager& componentManager;
+	    ComponentRegistry& componentRegistry;
 
-	    createGroup(mask);
-	    return groups[groups.size() - 1];
-	}
-    };
+	    void createGroup(const Mask& mask);
+	
+	public:
+	    GroupManager(const EntityManager& entityManager, const ComponentManager& componentManager, ComponentRegistry& componentRegistry);
+
+	    template<class ... Types>
+	    Group* getGroup()
+	    {
+		Mask mask = componentRegistry.getMask<Types ...>();
+                
+		for (uint i = 0; i < groups.size(); i++)
+		{
+		    if (groups[i]->getMask() == mask)
+		    {
+			return groups[i];
+		    }
+		}
+
+		createGroup(mask);
+		return groups[groups.size() - 1];
+	    }
+	};	
+    }
 }

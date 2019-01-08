@@ -72,9 +72,9 @@ int main()
     registry = engine.getWorld()->getComponentRegistry();
     world = engine.getWorld();
     em = world->getEntityManager();
- 
+
     engine.initialize();
-    
+
  
     world->addSystem(new S_FirstPersonCamera(2));
  
@@ -93,13 +93,19 @@ int main()
     
     mtgraphics::Window* window = graphics->getWindow(0);
     graphics->setBufferMask(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  
-   
+
+
+    std::cout << "CTransform mask: " << registry->getMask<C_Transform>().getMask() << std::endl;
+    std::cout << "CCamera mask: " << registry->getMask<C_Camera>().getMask() << std::endl;
+    std::cout << "CFirstPersonMovement mask: " << registry->getMask<C_FirstPersonMovement>().getMask() << std::endl;
+
+    
+    /*
     while(!window->shouldClose())
     {
         engine.update();
     }
-    
+    */
     
    return 0;
 }

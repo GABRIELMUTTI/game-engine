@@ -3,6 +3,7 @@
 #include "mtecs/component/Mask.hpp"
 #include "mtecs/entity/Entity.hpp"
 #include "mtecs/component/ComponentHandle.hpp"
+#include "mtecs/component/ComponentManager.hpp"
 
 #include <tuple>
 #include <vector>
@@ -19,6 +20,7 @@ namespace mtecs
 	std::tuple<ComponentHandle<Components>& ...> handles;
 	std::vector<Mask> masks;
 	unsigned int currentIndex;
+	const internal::ComponentManager& componentManager;
 
 	template<unsigned int N, class TFirst, class TSecond, class ... Rest>
 	void setComponents(Entity* entity)
@@ -30,15 +32,16 @@ namespace mtecs
 	template<unsigned int N, class TComponent>
 	void setComponents(Entity* entity)
 	{
-	    std::get<N, ComponentHandle<Components>& ...>(handles) = entity->getComponent<TComponent>(masks[N]);
+	    std::get<N, ComponentHandle<Components>& ...>(handles) = componentManager.getComponent<TComponent>(masks[N]);
            
 	}
 
     public:
-	GroupComponentIterator(Iterator containerIterator, std::tuple<ComponentHandle<Components>& ...> handles, const std::vector<Mask>& masks) :
+	GroupComponentIterator(Iterator containerIterator, std::tuple<ComponentHandle<Components>& ...> handles, const std::vector<Mask>& masks, const internal::ComponentManager& componentManager) :
 	    containerIterator(containerIterator),
 	    handles(handles),
-	    masks(masks)
+	    masks(masks),
+	    componentManager(componentManager)
 	{
  
 	}
